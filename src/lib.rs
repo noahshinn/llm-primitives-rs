@@ -569,10 +569,11 @@ fn index_to_alpha(mut index: usize) -> String {
     let mut alpha = String::new();
     loop {
         alpha = format!("{}{}", ('A' as u8 + (index % 26) as u8) as char, alpha);
-        index = index / 26 - 1;
-        if index == 0 {
+        index = index / 26;
+        if index <= 1 {
             break;
         }
+        index -= 1;
     }
     alpha
 }
