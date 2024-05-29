@@ -1,5 +1,5 @@
 use llm_primitives_rs::Model;
-use llm_primitives_rs::OpenaiModel;
+use llm_primitives_rs::OpenAIModel;
 use schemars::JsonSchema;
 use serde::Deserialize;
 use tokio;
@@ -12,7 +12,7 @@ struct Address {
 
 #[tokio::main]
 async fn main() {
-    let model = OpenaiModel::new(String::from("gpt-4o"));
+    let model = OpenAIModel::new(String::from("gpt-4o"));
     let response = model
         .parse::<Address>(String::from("My street is 123 main st"))
         .await;

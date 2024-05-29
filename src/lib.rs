@@ -51,7 +51,7 @@ pub trait Model {
         T: for<'de> Deserialize<'de> + JsonSchema;
 }
 
-pub struct OpenaiModel {
+pub struct OpenAIModel {
     model: String,
     api_key: String,
 }
@@ -189,10 +189,10 @@ struct Choice {
     message: OpenAIMessage,
 }
 
-impl OpenaiModel {
+impl OpenAIModel {
     pub fn new(model: String) -> Self {
         if let Ok(api_key) = std::env::var(OPENAI_API_KEY_NAME) {
-            OpenaiModel { model, api_key }
+            OpenAIModel { model, api_key }
         } else {
             panic!("{} not found in environment variables", OPENAI_API_KEY_NAME);
         }
@@ -291,7 +291,7 @@ impl OpenaiModel {
     }
 }
 
-impl Model for OpenaiModel {
+impl Model for OpenAIModel {
     async fn classify(
         &self,
         instruction: String,
